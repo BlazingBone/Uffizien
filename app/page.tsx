@@ -1,112 +1,246 @@
+"use client"
+
 import Image from 'next/image'
+import { useState } from 'react'
+import { ArrowSmallDownIcon, ArrowSmallRightIcon } from '@heroicons/react/24/solid'
 
 export default function Home() {
+
+  const [openUffizien, setOpenUffizien] = useState<boolean>(true);
+  const [openMasterpiece, setOpenMasterpeice] = useState<boolean>(false);
+  const [openRegularInfo, setRegularInfo] = useState<boolean>(false);
+  const [openConstruction, setOpenConstruction] = useState<boolean>(false);
+  const [openSculptures, setOpenSculptures] = useState<boolean>(false);
+  const [openDrawings, setOpenDrawings] = useState<boolean>(false);
+  const [openHighlights, setOpenHighlights] = useState<boolean>(false);
+
+
+  const openInfo = (info : string) => {
+
+    switch (info) {
+      case "main":
+        setOpenUffizien(prev => !prev);
+        break;
+      case "masterpiece":
+        setOpenMasterpeice(prev => !prev);
+        break;
+      case "regularInfo":
+        setRegularInfo(prev => !prev);
+        break;
+      case "construction":
+        setOpenConstruction(prev => !prev);
+        break;
+      case "sculptures":
+        setOpenSculptures(prev => !prev);
+        break;
+      case "drawings":
+        setOpenDrawings(prev => !prev);
+        break;
+      case "highlights":
+        setOpenHighlights(prev => !prev);
+        break;
+      default:
+        break;
+    }
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='flex flex-col min-h-[100vh] w-full bg-[#050100] text-white space-y-6'>
+
+      <h1 className='w-full text-center text-3xl font-bold bg-[#212122] py-5 text-white'>Uffizien</h1>
+
+      <div className='relative w-full lg:w-[300px] h-[300px]'>
+        <Image src={"/images/uffizien-100-1920x1080.jpg"} fill alt="uffizien" />
+      </div>
+
+      <div className='min-h-[48vh] md:min-h-[59vh] flex flex-col justify-end'>
+        <div className=' bg-[#212122] rounded-tr-md rounded-tl-md px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("main")}>
+              {openUffizien ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Was sind die Uffizien?</h2>
+          </div>
+          {openUffizien && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>- Sammlung italienischer Meisterwerke</li>
+                <li>- Museum besitzt eine der wichtigsten kunsthistorischen Sammlungen der Welt, deren Schwerpunkt auf der Malerei der Renaissance liegt</li>
+                <li>o	Gemälde, Skulpturen, Drucke und Zeichnungen sowie Werke der Archietektur</li>
+                <li>- verschiedenen Kunstepochen werden kennengelernt und es wird ein besseres Verständnis für die kulturellen, wirtschaftlichen und politischen Szenarien der Vergangenheit gewonnen</li>
+              </ul>
+            </div>
+          )}
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("masterpiece")}>
+              {openMasterpiece ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>9 Bekannte Kunstwerke</h2>
+          </div>
+          {openMasterpiece && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>- Piero della Francesca: "Doppelbildnis des Herzogpaares von Urbino"</li>
+                <li>- Filippo Lippi:"'Madonna mit Kind und zwei Engeln"</li>
+                <li>- Botticelli: "Der Frühling"</li>
+                <li>- Sandro Botticelli: "Die Geburt der Venus"</li>
+                <li>- Michelangelo: "Tondo Doni"</li>
+                <li>- Caravaggio: "Bacchus"</li>
+                <li>- Leonardo da Vinci: „die Verkündigung an Maria“</li>
+                <li>o Darüber hinaus moderne Kunstwerke von niederländischen, flämischen und deutschen Malern</li>
+              </ul>
+            </div>
+          )}
+        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("regularInfo")}>
+              {openRegularInfo ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Allgemeine Informationen</h2>
+          </div>
+          {openRegularInfo && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>- Gemäldesammlung auf 45 Museumssäle verteilt</li>
+                <li>- Der Bau des Uffizien-Palastes wird Giorgio Vasari zugeschrieben, der den Auftrag im Jahr 1560 erhielt</li>
+              </ul>
+            </div>
+          )}
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("construction")}>
+              {openConstruction ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Architektur</h2>
+          </div>
+          {openConstruction && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>-	Das Gebäude hat eine charakteristische U-Form, ist 3 Stockwerke hoch und wurde im manieristischen Stil entworfen</li>
+              </ul>
+            </div>
+          )}
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("sculptures")}>
+              {openSculptures ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Skulpturen</h2>
+          </div>
+          {openSculptures && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>-	Bemerkenswerte Reihe von Skulpturen, hauptsächlich aus der römischen Zeit</li>
+                <li>-	Die ersten, zweiten und dritten Korridore der zweiten Etage sind mit einer endlosen Reihe von klassischen Statuen und Büsten geschmückt</li>
+                <li>-	Die Statue der Kaiserin Helena, die schlafende Ariadne (die fast 2 Tonnen wiegt) und das Porträt von Agrippa gehören zu den wertvollsten Attraktionen des Museums</li>
+              </ul>
+            </div>
+          )}
+        </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("drawings")}>
+              {openDrawings ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Zeichnungen</h2>
+          </div>
+          {openDrawings && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+              <ul className='space-y-5'>
+                <li>-	In der ersten Etage befindet sich die Abteilung für Druckgrafik und Zeichnungen, die eine umfassende Sammlung von mehr als 177.000 Kunstwerken aus dem 14. bis 20. Jahrhundert umfasst</li>
+                <li>-	(Schwarz-Weiß-Radierungen, Zeichnungen und Drucke von Künstlern wie Rembrandt, Michelangelo, Alfonso Parigi, Giovanni Battista Piranesi, Leonardo da Vinci, Piero di Cosimo usw.)</li>
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div className=' bg-[#212122] px-3 py-2 text-lg'>
+          <div className='flex gap-5 items-center'>
+            <div className='p-1 rounded-full' onClick={() => openInfo("highlights")}>
+              {openHighlights ? (
+                <ArrowSmallDownIcon className='h-5 w-5'/>
+              ) : (
+                <ArrowSmallRightIcon className='h-5 w-5' />
+              )}
+            </div>
+            <h2 className='flex-1'>Highlights</h2>
+          </div>
+          {openHighlights && (
+            <div className='text-[16px] mt-4'>
+              <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
+                <div className='space-y-8'>
+                  
+                  <div>
+                    <h3 className='text-lg underline font-bold'>1. Die Geburt der Venus</h3>
+                      <div className='relative lg:w-[300px] w-full h-[250px]'>
+                        <Image src={"/images/Bild2.png"} fill alt="Geburt der Venus" />
+                      </div>
+
+                      <ul>
+                        <li>- die Göttin der Liebe und der Schönheit als Thema seines Gemäldes	</li>
+                        <li>-	klassische Statuen und hellenistische Periode</li>
+                        <li>-	Die Szene fängt den Moment ein, in dem Venus auf einer riesigen Muschelschale auf der Insel Zypern ankommt</li>
+                      </ul>
+                  </div>
+
+                  <br />
+
+                  <div>
+                    <h3 className='text-lg underline font-bold'>2. Verkündigung an Maria (Leonardo da Vinci)</h3>
+                      <div className='relative lg:w-[300px] w-full h-[250px]'>
+                        <Image src={"/images/Bild3.jpg"} fill alt="Geburt der Venus" />
+                      </div>
+                      <ul>
+                        <li>-	zwischen 1475 und 1480 in Zusammenarbeit mit Vincis Meister, Andrea del Verrochio, gemalt</li>
+                        <li>-	gehört zu Leonardos früheren Werken</li>
+                        <li>- ein fesselndes Bild der Jungfrau Maria, die vom Erzengel Gabriel besucht wird, um ihm die Geburt Jesu zu verkünden.</li>
+                      </ul>
+                  </div>
+                  <br />
+              </div>
+            </div>
+          )}
+        </div>    
       </div>
     </main>
   )
