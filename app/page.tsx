@@ -93,7 +93,7 @@ export default function Home() {
             <div className='text-[16px] mt-4'>
               <hr className='border border-[#4e4c4c] opacity-70 mb-4' />
               <ul className='space-y-5'>
-                <li>- Piero della Francesca: "Doppelbildnis des Herzogpaares von Urbino"</li>
+                <li>- Piero della Francesca: &quot Doppelbildnis des Herzogpaares von Urbino &quot</li>
                 <li>- Filippo Lippi:"'Madonna mit Kind und zwei Engeln"</li>
                 <li>- Botticelli: "Der Frühling"</li>
                 <li>- Sandro Botticelli: "Die Geburt der Venus"</li>
